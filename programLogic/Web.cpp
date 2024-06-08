@@ -2,19 +2,32 @@
 #include <iostream>
 
 
-//desarrollo de los metodos
-void Web::setUrl( char* urlSetted) {
-    char* url=urlSetted;
+/**
+ * @brief 
+ *  Estos metodos asignan los valores de URL y nombre
+ * @param urlSetted 
+ */
+void Web::setUrl( string urlSetted) 
+{
+     url=urlSetted;
 }
 
-void Web::setNombre( char* nombreSetted) {
-     char* nombre=nombreSetted;
+void Web::setNombre( string nombreSetted) 
+{
+      nombre=nombreSetted;
 }
 
-char* Web::getUrl() {
+/**
+ * @brief 
+ * Estos metodo retorna el valor de URL y NOMBRE
+ * @return string 
+ */
+string Web::getUrl()
+ {
     return url;
 }
 
-char* Web::getNombre() {
+string Web::getNombre() 
+{
     return nombre;
 }

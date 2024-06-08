@@ -1,16 +1,19 @@
-#pragma once
+#include <iostream>
 
-class Web {
+using namespace std;
+
+class Web
+ {
 
     private:
-         char* url,nombre;
-    
+         string url,nombre;
+
     public:
         //getters
-         char* getUrl();
-         char* getNombre();
+         string getUrl();
+         string getNombre();
         //setters
-        void setUrl( char*);
-        void setNombre( char*);
+        void setUrl(string);
+        void setNombre(string);
 };      
 
