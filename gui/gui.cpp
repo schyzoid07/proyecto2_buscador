@@ -28,6 +28,7 @@ int Gui::menuPrincipal() {
             case 0:
                 system("cls");
                 std::cout<<"Hasta luego :)"<<std::endl<<std::endl;
+                system("pause");
                 break;
             case 1:
                 system("cls");
@@ -111,6 +112,12 @@ int Gui::menuPaginasWebFavorito() {
 
         switch (opcion)
         {
+        case 0:
+        system("cls");    
+            std::cout<<"Volviendo al Menu Principal..."<<std::endl;
+            system("pause");
+            menuPrincipal();
+        break;
         case 1:
             //Funcion para navegar hacia adelante
         break;
