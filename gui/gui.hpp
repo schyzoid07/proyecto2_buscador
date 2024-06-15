@@ -1,7 +1,7 @@
-#ifndef _WEB_HPP
-#define _WEB_HPP
+#ifndef _GUI_HPP
+#define _GUI_HPP
 
-class gui
+class Gui
 {
 private:
 //Variable ocn la que el usuario eligira la opcion del menu
@@ -17,6 +17,7 @@ int getOpcion();
 void setOpcion(int);
 int menuPrincipal();
 int menuPaginasWeb();
+int menuPaginasWebFavorito();
 };
 
 
