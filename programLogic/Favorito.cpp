@@ -6,5 +6,5 @@ Favorito::Favorito(string &urlEnviado, string &nombreEnviado) {
   nombre = nombreEnviado;
 }
 
-string Favorito::getUrl() { return url; }
-string Favorito::getNombre() { return nombre; }
+string Favorito::getUrl() const { return url; }
+string Favorito::getNombre() const { return nombre; }

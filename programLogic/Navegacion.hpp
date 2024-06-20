@@ -1,8 +1,11 @@
-#include "Favorito.hpp"
+#include "CarpetaFavoritos.hpp"
 #include <fstream>
+#include <iostream>
+#include <map>
 #include <queue>
 #include <stack>
 #include <string>
+
 using namespace std;
 
 class Navegacion {
@@ -12,12 +15,23 @@ private:
     string nombre = ".txt";
     string URL = "https://.com";
   };
-  stack<pagina> historial;
-  stack<pagina> historialProximo;
+  stack<string> historial;
+  stack<string> historialProximo;
   map<string, Favorito> favoritos;
   queue<Favorito> favoritosEliminados;
-  map<string, CarpetaFavorito> carpetas;
+  map<string, CarpetaFavoritos> carpetas;
 
 public:
+  void navegar(string &url);
+  void navegarFavorito(string &url);
+  void navegarAdelante();
+  void navegarAtras();
+  void guardarFavorito(string &url, string &nombre);
+  void eliminarFavorito(string &url);
+  void restaurarFavorito();
+  void organizarFavoritos();
+  void exportarFavoritosHTML(string &archivo);
+  void mostrarFavoritos();
+
   void cargarArchivo(pagina historial);
 };

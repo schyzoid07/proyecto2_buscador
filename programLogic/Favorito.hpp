@@ -8,6 +8,6 @@ private:
 
 public:
   Favorito(string &urlEnviado, string &nombreEnviado);
-  string getUrl();
-  string getNombre();
+  string getUrl() const;
+  string getNombre() const;
 };
