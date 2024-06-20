@@ -1,4 +1,4 @@
-#include "../programLogic/Favorito.hpp"
+#include "../programLogic/Navegacion.hpp"
 #include <fstream>
 #include <iostream>
 #include <map>

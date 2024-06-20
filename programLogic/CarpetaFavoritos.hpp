@@ -5,6 +5,8 @@
 
 class CarpetaFavoritos {
 public:
+  
+  CarpetaFavoritos() : nombre("") {}
   CarpetaFavoritos(const std::string &nombre) : nombre(nombre) {}
 
   void agregarFavorito(const Favorito &favorito) {

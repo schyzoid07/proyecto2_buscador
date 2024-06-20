@@ -1,10 +1,13 @@
-#include "gui.hpp"
-#include "gui.cpp"
+#include "gui/gui.hpp"
 #include <iostream>
 using namespace std;
 
+int main() {
 
-int main () {
+  Navegacion nav;
+  GestorArchivos ges;
+  Gui gui(nav, ges);
+  gui.menuPrincipal();
 
-    return 0;
+  return 0;
 }

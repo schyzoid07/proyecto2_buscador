@@ -11,12 +11,12 @@ void GestorArchivos::cargarFavoritos(map<string, Favorito> &favoritos) {
   }
 }
 
-void guardarFavoritos(map<string, Favorito> &favoritos) {
-  ofstream archivo("favoritos.txt");
-  if (archivo.is_open()) {
-    for (const auto &[nombre, favorito] : favoritos) {
-      archivo << nombre << " " << favoritos.getURL() << "\n";
+void guardarFavoritos(const std::map<std::string, Favorito> &favoritos) {
+    std::ofstream archivo("favoritos.txt");
+
+    for (const auto &pair : favoritos) {
+        const std::string &nombre = pair.first;
+        const Favorito &favorito = pair.second;
+        archivo << nombre << " " << favorito.getUrl() << "\n";
     }
-    archivo.close();
-  }
 }

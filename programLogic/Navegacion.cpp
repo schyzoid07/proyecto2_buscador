@@ -10,7 +10,7 @@ void Navegacion::navegar(string &url) {
 void Navegacion::navegarFavorito(string &nombre) {
   auto it = favoritos.find(nombre);
   if (it != favoritos.end()) {
-    navegar(it->second.getUrl());
+    // navegar(it->second.getUrl());
   } else {
     cout << "Favorito no encontrado.\n";
   }
