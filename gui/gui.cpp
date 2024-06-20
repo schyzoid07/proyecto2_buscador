@@ -6,8 +6,8 @@ int Gui::getOpcion() { return opcion; }
 
 void Gui::setOpcion(int op) { opcion = op; }
 
-void Gui::menuPrincipal() {
-  while (opcion == -1) {
+int Gui::menuPrincipal() {
+  while (opcion != 0) {
     system("cls");
     std::cout << "        ¡Bienvenido usuario!" << std::endl;
 
@@ -26,8 +26,7 @@ void Gui::menuPrincipal() {
     case 0:
       system("cls");
       std::cout << "Hasta luego :)" << std::endl << std::endl;
-      system("pause");
-      break;
+      return 0;
     case 1: {
       system("cls");
       menuPaginasWeb();
@@ -49,15 +48,15 @@ void Gui::menuPrincipal() {
     default:
       std::cout
           << "Opcion no valida. Por favor, introduzca un numero valido...";
-      opcion = -1;
       break;
     }
   }
+  return 0;
 }
 
 void Gui::menuPaginasWeb() {
   opcion = -1;
-  while (opcion == -1) {
+  while (true) {
 
     system("cls");
     std::cout << "0. Salir" << std::endl;
@@ -72,10 +71,10 @@ void Gui::menuPaginasWeb() {
 
     switch (opcion) {
     case 0:
-      system("cls");
+     
       std::cout << "Volviendo al Menu Principal..." << std::endl;
-      system("pause");
-      menuPrincipal();
+      opcion = -1;
+      return;
       break;
     case 1:
       navegador.navegarAdelante();
@@ -112,9 +111,9 @@ void Gui::menuPaginasWeb() {
 }
 
 void Gui::menuPaginasWebFavorito() {
-  opcion = -1;
+ 
 
-  while (opcion == -1) {
+  while (true) {
     system("cls");
     std::cout << "0. Salir" << std::endl;
     std::cout << "1. Navegar hacia adelante" << std::endl;
@@ -132,9 +131,8 @@ void Gui::menuPaginasWebFavorito() {
     case 0:
       system("cls");
       std::cout << "Volviendo al Menu Principal..." << std::endl;
-      system("pause");
-      menuPrincipal();
-      break;
+      opcion = -1;
+      return;
     case 1:
       navegador.navegarAdelante();
       break;

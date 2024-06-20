@@ -10,4 +10,5 @@ class GestorArchivos {
 public:
   void cargarFavoritos(map<string, Favorito> &favoritos);
   void guardarFavoritos(map<string, Favorito> &favoritos);
+  void exportarFavoritosHTML(const std::vector<std::pair<std::string, CarpetaFavoritos>> &favoritos);
 };

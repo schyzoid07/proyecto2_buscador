@@ -16,7 +16,7 @@ public:
   // Getters y Setters
   int getOpcion();
   void setOpcion(int);
-  void menuPrincipal();
+  int menuPrincipal();
   void menuPaginasWeb();
   void menuPaginasWebFavorito();
 };

@@ -6,12 +6,11 @@
 class CarpetaFavoritos {
 public:
   
-  CarpetaFavoritos() : nombre("") {}
-  CarpetaFavoritos(const std::string &nombre) : nombre(nombre) {}
-
-  void agregarFavorito(const Favorito &favorito) {
-    favoritos.push_back(favorito);
-  }
+   CarpetaFavoritos();
+    CarpetaFavoritos(const std::string& nombre);
+    void agregarFavorito(const Favorito& favorito);
+  bool eliminarFavorito(const std::string& nombre);
+    const std::vector<Favorito>& getFavoritos() const;
 
 private:
   std::string nombre;

@@ -1,10 +1,13 @@
 #include "CarpetaFavoritos.hpp"
 #include <fstream>
 #include <iostream>
-#include <map>
 #include <queue>
 #include <stack>
 #include <string>
+#include <utility>
+#include <map>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -15,23 +18,29 @@ private:
     string nombre = ".txt";
     string URL = "https://.com";
   };
-  stack<string> historial;
-  stack<string> historialProximo;
+  vector<string> paginas;
+  vector<string> historial;
+  vector<string> historialProximo;
   map<string, Favorito> favoritos;
-  queue<Favorito> favoritosEliminados;
-  map<string, CarpetaFavoritos> carpetas;
+  queue<string> favoritosEliminados;
+  vector<pair<string, CarpetaFavoritos>> carpetasFavoritos;
+  int paginaActual;
 
 public:
-  void navegar(string &url);
+  Navegacion();
+  void navegar();
   void navegarFavorito(string &url);
   void navegarAdelante();
   void navegarAtras();
   void guardarFavorito(string &url, string &nombre);
-  void eliminarFavorito(string &url);
+  void eliminarFavorito(string &nombre);
+  void eliminarPaginaFavoritos();
   void restaurarFavorito();
   void organizarFavoritos();
   void exportarFavoritosHTML(string &archivo);
   void mostrarFavoritos();
+  void agregarPagina(string& pagina);
+  const std::vector<std::pair<std::string, CarpetaFavoritos>>&getFavoritos() const;
 
   void cargarArchivo(pagina historial);
 };
