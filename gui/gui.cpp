@@ -1,12 +1,13 @@
 #include "gui.hpp"
 #include <iostream>
 
+
 int Gui::getOpcion() { return opcion; }
 
 void Gui::setOpcion(int op) { opcion = op; }
 
 int Gui::menuPrincipal() {
-  while (opcion == -1) {
+  while (opcion != 0) {
     system("cls");
     std::cout << "        ¡Bienvenido usuario!" << std::endl;
 
@@ -25,28 +26,37 @@ int Gui::menuPrincipal() {
     case 0:
       system("cls");
       std::cout << "Hasta luego :)" << std::endl << std::endl;
-      system("pause");
-      break;
-    case 1:
+      return 0;
+    case 1: {
       system("cls");
       menuPaginasWeb();
       break;
-    case 2:
+    }
+    case 2: {
       system("cls");
       menuPaginasWebFavorito();
       break;
+    }
+    case 3: {
+      system("cls");
+      cout << "Ingrese el nombre del archivo HTML a exportar: ";
+      string archivo;
+      cin >> archivo;
+      navegador.exportarFavoritosHTML(archivo);
+      break;
+    }
     default:
       std::cout
           << "Opcion no valida. Por favor, introduzca un numero valido...";
-      opcion = -1;
       break;
     }
   }
+  return 0;
 }
 
-int Gui::menuPaginasWeb() {
+void Gui::menuPaginasWeb() {
   opcion = -1;
-  while (opcion == -1) {
+  while (true) {
 
     system("cls");
     std::cout << "0. Salir" << std::endl;
@@ -61,26 +71,34 @@ int Gui::menuPaginasWeb() {
 
     switch (opcion) {
     case 0:
-      system("cls");
+     
       std::cout << "Volviendo al Menu Principal..." << std::endl;
-      system("pause");
-      menuPrincipal();
+      opcion = -1;
+      return;
       break;
     case 1:
-      // Funcion para navegar hacia adelante
+      navegador.navegarAdelante();
       break;
 
     case 2:
-      // Funcion para navegar hacia atras
+      navegador.navegarAtras();
       break;
 
-    case 3:
-      // Funcion para guardar una pagina en la lista de Favs
-      break;
-
-    case 4:
-      // Funcion para eliminar una pagina de la lista de Favs
-      break;
+    case 3: {
+      std::string url, nombre;
+      std::cout << "Ingrese la URL del favorito: ";
+      std::cin >> url;
+      std::cout << "Ingrese el nombre del favorito: ";
+      std::cin >> nombre;
+      navegador.guardarFavorito(url, nombre);
+    } break;
+    case 4: {
+      std::string nombre;
+      std::cout << "Ingrese el nombre o URL del favorito a eliminar: ";
+      std::cin.ignore();
+      std::getline(std::cin, nombre);
+      navegador.eliminarFavorito(nombre);
+    } break;
 
     default:
       std::cout
@@ -88,15 +106,14 @@ int Gui::menuPaginasWeb() {
       opcion = -1;
       system("pause");
       break;
-      break;
     }
   }
 }
 
-int Gui::menuPaginasWebFavorito() {
-  opcion = -1;
+void Gui::menuPaginasWebFavorito() {
+ 
 
-  while (opcion == -1) {
+  while (true) {
     system("cls");
     std::cout << "0. Salir" << std::endl;
     std::cout << "1. Navegar hacia adelante" << std::endl;
@@ -114,25 +131,27 @@ int Gui::menuPaginasWebFavorito() {
     case 0:
       system("cls");
       std::cout << "Volviendo al Menu Principal..." << std::endl;
-      system("pause");
-      menuPrincipal();
-      break;
+      opcion = -1;
+      return;
     case 1:
-      // Funcion para navegar hacia adelante
+      navegador.navegarAdelante();
       break;
-
     case 2:
-      // Funcion para navegar hacia atras
+      navegador.navegarAtras();
       break;
-
-    case 3:
-      // Funcion para eliminar pagina en la lista de Favoritos
-      break;
-
+    case 3: {
+      std::string nombre;
+      std::cout << "Ingrese el nombre o URL del favorito a eliminar: ";
+      std::cin.ignore();
+      std::getline(std::cin, nombre);
+      navegador.eliminarFavorito(nombre);
+    } break;
     case 4:
-      // Funcion para restaurar los ultimos 5 Favoritos eliminados
+      navegador.restaurarFavorito();
       break;
-
+    case 5:
+      navegador.organizarFavoritos();
+      break;
     default:
       std::cout
           << "Opcion no valida. Por favor, introduzca un numero valido...";

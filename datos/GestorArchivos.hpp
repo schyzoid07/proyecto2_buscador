@@ -1,4 +1,4 @@
-#include "../programLogic/Favorito.hpp"
+#include "../programLogic/Navegacion.hpp"
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -10,4 +10,5 @@ class GestorArchivos {
 public:
   void cargarFavoritos(map<string, Favorito> &favoritos);
   void guardarFavoritos(map<string, Favorito> &favoritos);
+  void exportarFavoritosHTML(const std::vector<std::pair<std::string, CarpetaFavoritos>> &favoritos);
 };
